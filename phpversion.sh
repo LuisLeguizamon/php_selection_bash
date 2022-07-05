@@ -10,7 +10,15 @@ case $PHPVERSION in
         "8")
         PHPVERSION=8.0
         ;;
+        *)
+        PHPVERSION="0"
+        ;;
 esac
+if [ "$PHPVERSION" = "0" ];
+then
+        echo "Invalid selection"
+        exit
+fi
 echo $PHPVERSION
 sudo update-alternatives --set php /usr/bin/php$PHPVERSION
 sudo update-alternatives --set phar /usr/bin/phar$PHPVERSION
